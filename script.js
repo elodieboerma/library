@@ -40,9 +40,10 @@ function showForm() {
 
         // title
         const titleBox = document.createElement("div");
+        titleBox.classList.add("box");
         const titleLabel = document.createElement("label");
         titleLabel.setAttribute("for","title");
-        titleLabel.textContent = "title";
+        titleLabel.textContent = "Title";
         const titleInput = document.createElement("input");
         titleInput.setAttribute("type","text");
         titleInput.id = "title";
@@ -55,9 +56,10 @@ function showForm() {
 
         // author
         const authorBox = document.createElement("div");
+        authorBox.classList.add("box");
         const authorLabel = document.createElement("label");
-        authorLabel.setAttribute("for","title");
-        authorLabel.textContent = "title";
+        authorLabel.setAttribute("for","author");
+        authorLabel.textContent = "Author";
         const authorInput = document.createElement("input");
         authorInput.setAttribute("type","text");
         authorInput.id = "author";
@@ -70,9 +72,10 @@ function showForm() {
 
         // number of pages
         const pagesBox = document.createElement("div");
+        pagesBox.classList.add("box");
         const pagesLabel = document.createElement("label");
-        pagesLabel.setAttribute("for","title");
-        pagesLabel.textContent = "title";
+        pagesLabel.setAttribute("for","pages");
+        pagesLabel.textContent = "Page number";
         const pagesInput = document.createElement("input");
         pagesInput.setAttribute("type","text");
         pagesInput.id = "pages";
@@ -85,9 +88,10 @@ function showForm() {
 
         // read yet
         const readYetBox = document.createElement("div");
+        readYetBox.classList.add("box");
         const readYetLabel = document.createElement("label");
-        readYetLabel.setAttribute("for","title");
-        readYetLabel.textContent = "title";
+        readYetLabel.setAttribute("for","readYet");
+        readYetLabel.textContent = "Read yet?";
         const readYetInput = document.createElement("input");
         readYetInput.setAttribute("type","text");
         readYetInput.id = "readYet";
