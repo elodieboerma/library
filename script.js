@@ -1,8 +1,7 @@
 const library = [];
 
-addBookToLibrary("The Hobbit","J.R.R. Tolkien",295,"not read yet");
-addBookToLibrary("Emma","Jane Austen",208,"read");
-addBookToLibrary("Anna Karenina","Leo Tolstoy",880,"not read yet");
+const bookshelf = document.getElementById("bookshelf");
+
 
 // main
 
@@ -13,15 +12,19 @@ function Book(title,author,pages,readYet) {
     this.readYet = readYet;
 }
 
+
+
 function addBookToLibrary(title,author,pages,readYet) {
     let book = new Book(title,author,pages,readYet);
     book.id = crypto.randomUUID();
     library.push(book);
 }
 
-const bookshelf = document.getElementById("bookshelf");
+
 
 function displayBooks() {
+    bookshelf.textContent = "";
+
     for(const book of library) {
         const newBook = document.createElement("div");
         newBook.textContent = `${book.title} (${book.author})`;
@@ -32,9 +35,13 @@ function displayBooks() {
 
 displayBooks();
 
+
+
 // takes user input in a form to add a new book to library[]
 const newButton = document.getElementById("new");
 newButton.addEventListener("click", showForm);
+
+
 
 function showForm() {
         const form = document.getElementById("form");
@@ -108,6 +115,7 @@ function showForm() {
 
         form.append(fieldset);
 
+
         // submit button
         const submitBtn = document.createElement("button");
         submitBtn.setAttribute("type","submit");
@@ -122,7 +130,6 @@ function showForm() {
                 readYetInput.value
             );
             displayBooks();
-        }
-        );
+        });
         form.append(submitBtn);
 }
