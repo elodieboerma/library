@@ -29,11 +29,27 @@ function displayBooks() {
         const newBook = document.createElement("div");
         newBook.textContent = `${book.title} (${book.author})`;
         newBook.classList.add("bookDecoration");
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.id = book.id;
+        deleteBtn.style.margin = "5px";
+
+        deleteBtn.addEventListener("click", () => {
+            const index = library.indexOf(book);
+            if (index > -1) {
+                library.splice(index, 1);  // remove from array
+            }
+            newBook.remove(); // remove from page
+        });
+
+        newBook.append(deleteBtn);
         bookshelf.append(newBook);
     }
 }
 
 displayBooks();
+
 
 
 const newButton = document.getElementById("new");
@@ -50,6 +66,7 @@ newButton.addEventListener("click", () => {
     // If the form is empty, build it
     showForm();
 });
+
 
 
 // takes user input in a form to add a new book to library[]
