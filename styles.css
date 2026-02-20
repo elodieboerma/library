@@ -19,6 +19,15 @@ body {
     margin: 5px;
 }
 
+.readTextColor {
+    border: 1px solid coral;
+    border-radius: 10px;
+    background-color: rgb(245, 194, 194);
+    padding: 5px;
+    margin: 5px;
+    width: max-content;
+}
+
 #form {
     grid-column: 2;
     padding: 15px;

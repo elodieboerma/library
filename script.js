@@ -5,17 +5,16 @@ const bookshelf = document.getElementById("bookshelf");
 
 // main
 
-function Book(title,author,pages,readYet) {
+function Book(title,author,pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.readYet = readYet;
 }
 
 
 
-function addBookToLibrary(title,author,pages,readYet) {
-    let book = new Book(title,author,pages,readYet);
+function addBookToLibrary(title,author,pages) {
+    let book = new Book(title,author,pages);
     book.id = crypto.randomUUID();
     library.push(book);
 }
@@ -30,11 +29,17 @@ function displayBooks() {
         newBook.textContent = `${book.title} (${book.author})`;
         newBook.classList.add("bookDecoration");
 
+        const readText = document.createElement("div");
+        readText.classList.add("readTextColor");
+        readText.textContent = "unread";
+        let isRead = false;
+        newBook.append(readText);
+
+        // delete button
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
         deleteBtn.id = book.id;
         deleteBtn.style.margin = "5px";
-
         deleteBtn.addEventListener("click", () => {
             const index = library.indexOf(book);
             if (index > -1) {
@@ -43,7 +48,25 @@ function displayBooks() {
             newBook.remove(); // remove from page
         });
 
+        // read/unread toggle button
+        const readBtn = document.createElement("button");
+        readBtn.textContent = "Mark as read";
+        readBtn.id = book.id;
+        readBtn.style.margin = "5px";
+        readBtn.addEventListener("click", () => {
+            if (isRead === true) {
+                readText.textContent = "Unread";
+                readBtn.textContent = "Mark as read";
+                isRead = false;
+            }else {
+                readText.textContent = "Read";
+                readBtn.textContent = "Mark as unread";
+                isRead = true;
+            }
+        });
+
         newBook.append(deleteBtn);
+        newBook.append(readBtn);
         bookshelf.append(newBook);
     }
 }
@@ -124,22 +147,6 @@ function showForm() {
     pagesBox.append(pagesInput);
     fieldset.append(pagesBox);
 
-    // read yet
-    const readYetBox = document.createElement("div");
-    readYetBox.classList.add("box");
-    const readYetLabel = document.createElement("label");
-    readYetLabel.setAttribute("for","readYet");
-    readYetLabel.textContent = "Read yet?";
-    const readYetInput = document.createElement("input");
-    readYetInput.setAttribute("type","text");
-    readYetInput.id = "readYet";
-    readYetInput.setAttribute("placeholder","not read yet");
-    readYetInput.required = true;
-    // children
-    readYetBox.append(readYetLabel);
-    readYetBox.append(readYetInput);
-    fieldset.append(readYetBox);
-
     form.append(fieldset);
 
 
@@ -155,8 +162,7 @@ function showForm() {
         addBookToLibrary(
             titleInput.value,
             authorInput.value,
-            pagesInput.value,
-            readYetInput.value
+            pagesInput.value
         );
 
         displayBooks();
