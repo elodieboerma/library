@@ -29,10 +29,8 @@ for(const book of library) {
 }
 
 // takes user input in a form to add a new book to library[]
-function addUserBook() {
-    const newButton = document.getElementById("new");
-    newButton.addEventListener("click", showForm());
-}
+const newButton = document.getElementById("new");
+newButton.addEventListener("click", showForm);
 
 function showForm() {
         const form = document.getElementById("form");
