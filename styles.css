@@ -25,9 +25,12 @@ body {
 button {
     align-self: center;
     padding: 5px;
-    margin-top: 0;
-    margin-bottom: 10px;
+    margin: 10px 0px;
     width: max-content;
+}
+
+#new {
+    margin-top: 0;
 }
 
 .box {

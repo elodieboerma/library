@@ -108,12 +108,4 @@ function showForm() {
         submitBtn.textContent = "Submit";
         submitBtn.addEventListener("click", addBookToLibrary(title,author,pages,readYet));
         form.append(submitBtn);
-        
-        /*submitBook(title,author,pages,readYet);*/
     }
- 
-
-/*function submitBook(title,author,pages,readYet) {
-    const deleteBtn = document.createElement("button");
-    deleteBtn.addEventListener("click", addBookToLibrary(title,author,pages,readYet));
-}*/
