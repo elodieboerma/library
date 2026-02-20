@@ -105,6 +105,7 @@ function showForm() {
         form.append(fieldset);
 
         const submitBtn = document.createElement("button");
+        submitBtn.setAttribute("type","submit");
         submitBtn.textContent = "Submit";
         submitBtn.addEventListener("click", addBookToLibrary(title,author,pages,readYet));
         form.append(submitBtn);
