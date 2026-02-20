@@ -19,9 +19,10 @@ function addBookToLibrary(title,author,pages,readYet) {
     library.push(book);
 }
 
+const bookshelf = document.getElementById("bookshelf");
+
 for(const book of library) {
     const newBook = document.createElement("div");
-    const bookshelf = document.getElementById("bookshelf");
     newBook.textContent = `${book.title} (${book.author})`;
     newBook.classList.add("bookDecoration");
     bookshelf.append(newBook);
@@ -29,5 +30,8 @@ for(const book of library) {
 
 function addUserBook(title,author,pages,readYet) {
     const newButton = document.getElementById("new");
-    newButton.addEventListener("click", /*add form popup thing here*/);
+    newButton.addEventListener("click", function showForm() {
+        
+    }
+    );
 }
