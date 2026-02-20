@@ -21,12 +21,16 @@ function addBookToLibrary(title,author,pages,readYet) {
 
 const bookshelf = document.getElementById("bookshelf");
 
-for(const book of library) {
-    const newBook = document.createElement("div");
-    newBook.textContent = `${book.title} (${book.author})`;
-    newBook.classList.add("bookDecoration");
-    bookshelf.append(newBook);
+function displayBooks() {
+    for(const book of library) {
+        const newBook = document.createElement("div");
+        newBook.textContent = `${book.title} (${book.author})`;
+        newBook.classList.add("bookDecoration");
+        bookshelf.append(newBook);
+    }
 }
+
+displayBooks();
 
 // takes user input in a form to add a new book to library[]
 const newButton = document.getElementById("new");
@@ -104,9 +108,21 @@ function showForm() {
 
         form.append(fieldset);
 
+        // submit button
         const submitBtn = document.createElement("button");
         submitBtn.setAttribute("type","submit");
         submitBtn.textContent = "Submit";
-        submitBtn.addEventListener("click", addBookToLibrary(title,author,pages,readYet));
+        submitBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            addBookToLibrary(
+                titleInput.value,
+                authorInput.value,
+                pagesInput.value,
+                readYetInput.value
+            );
+            displayBooks();
+        }
+        );
         form.append(submitBtn);
-    }
+}
