@@ -20,7 +20,7 @@ body {
 }
 
 .readTextColor {
-    border: 1px solid coral;
+    border: 2px solid coral;
     border-radius: 10px;
     background-color: rgb(245, 194, 194);
     padding: 5px;
