@@ -20,9 +20,14 @@ function addBookToLibrary(title,author,pages,readYet) {
 }
 
 for(const book of library) {
-    const bookshelf = document.getElementById("bookshelf");
     const newBook = document.createElement("div");
+    const bookshelf = document.getElementById("bookshelf");
     newBook.textContent = `${book.title} (${book.author})`;
     newBook.classList.add("bookDecoration");
     bookshelf.append(newBook);
+}
+
+function addUserBook(title,author,pages,readYet) {
+    const newButton = document.getElementById("new");
+    newButton.addEventListener("click", /*add form popup thing here*/);
 }
