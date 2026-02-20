@@ -28,10 +28,83 @@ for(const book of library) {
     bookshelf.append(newBook);
 }
 
-function addUserBook(title,author,pages,readYet) {
+// takes user input in a form to add a new book to library[]
+function addUserBook() {
     const newButton = document.getElementById("new");
     newButton.addEventListener("click", function showForm() {
+        const form = document.createElement("form");
+        const instructions = document.createElement("p");
+        instructions.textContent = "Add a book to your library."
+        const fieldset = document.createElement("fieldset");
+
+        // title
+        const titleBox = document.createElement("div");
+        const titleLabel = document.createElement("label");
+        titleLabel.setAttribute("for","title");
+        titleLabel.textContent = "title";
+        const titleInput = document.createElement("input");
+        titleInput.setAttribute("type","text");
+        titleInput.id = "title";
+        titleInput.setAttribute("placeholder","The Hobbit");
+        titleInput.required = true;
+        // children
+        titleBox.append(titleLabel);
+        titleBox.append(titleInput);
+        fieldset.append(titleBox);
+
+        // author
+        const authorBox = document.createElement("div");
+        const authorLabel = document.createElement("label");
+        authorLabel.setAttribute("for","title");
+        authorLabel.textContent = "title";
+        const authorInput = document.createElement("input");
+        authorInput.setAttribute("type","text");
+        authorInput.id = "author";
+        authorInput.setAttribute("placeholder","J.R.R. Tolkien");
+        authorInput.required = true;
+        // children
+        authorBox.append(authorLabel);
+        authorBox.append(authorInput);
+        fieldset.append(authorBox);
+
+        // number of pages
+        const pagesBox = document.createElement("div");
+        const pagesLabel = document.createElement("label");
+        pagesLabel.setAttribute("for","title");
+        pagesLabel.textContent = "title";
+        const pagesInput = document.createElement("input");
+        pagesInput.setAttribute("type","text");
+        pagesInput.id = "pages";
+        pagesInput.setAttribute("placeholder","295");
+        pagesInput.required = true;
+        // children
+        pagesBox.append(pagesLabel);
+        pagesBox.append(pagesInput);
+        fieldset.append(pagesBox);
+
+        // read yet
+        const readYetBox = document.createElement("div");
+        const readYetLabel = document.createElement("label");
+        readYetLabel.setAttribute("for","title");
+        readYetLabel.textContent = "title";
+        const readYetInput = document.createElement("input");
+        readYetInput.setAttribute("type","text");
+        readYetInput.id = "readYet";
+        readYetInput.setAttribute("placeholder","not read yet");
+        readYetInput.required = true;
+        // children
+        readYetBox.append(readYetLabel);
+        readYetBox.append(readYetInput);
+        fieldset.append(readYetBox);
+
+        form.append(fieldset);
         
+        submitBook(title,author,pages,readYet);
     }
     );
+}
+
+function submitBook(title,author,pages,readYet) {
+    const deleteBtn = document.createElement("button");
+    deleteBtn.addEventListener("click", addBookToLibrary(title,author,pages,readYet));
 }
