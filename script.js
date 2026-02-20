@@ -31,8 +31,11 @@ for(const book of library) {
 // takes user input in a form to add a new book to library[]
 function addUserBook() {
     const newButton = document.getElementById("new");
-    newButton.addEventListener("click", function showForm() {
-        const form = document.createElement("form");
+    newButton.addEventListener("click", showForm());
+}
+
+function showForm() {
+        const form = document.getElementById("form");
         const instructions = document.createElement("p");
         instructions.textContent = "Add a book to your library."
         const fieldset = document.createElement("fieldset");
@@ -101,8 +104,7 @@ function addUserBook() {
         
         submitBook(title,author,pages,readYet);
     }
-    );
-}
+ 
 
 function submitBook(title,author,pages,readYet) {
     const deleteBtn = document.createElement("button");

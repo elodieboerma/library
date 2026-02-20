@@ -1,7 +1,27 @@
+body {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#bookshelf {
+    grid-column: 1;
+    border: 2px solid brown;
+}
+
 .bookDecoration {
     border: 2px solid black;
     border-radius: 10px;
     width: max-content;
     padding: 5px;
     margin: 5px;
+}
+
+#form {
+    grid-column: 2;
+    justify-self: center;
+}
+
+#new {
+    padding: 10px;
+    width: max-content;
 }
