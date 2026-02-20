@@ -136,7 +136,7 @@ function showForm() {
     pagesBox.classList.add("box");
     const pagesLabel = document.createElement("label");
     pagesLabel.setAttribute("for","pages");
-    pagesLabel.textContent = "Page number";
+    pagesLabel.textContent = "Number of pages";
     const pagesInput = document.createElement("input");
     pagesInput.setAttribute("type","text");
     pagesInput.id = "pages";
