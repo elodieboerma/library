@@ -5,12 +5,34 @@ const bookshelf = document.getElementById("bookshelf");
 
 // main
 
-function Book(title,author,pages) {
+/*function Book(title,author,pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-}
+}*/
 
+// class replacing the above object constructor
+class Book {
+    constructor (title,author,pages) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+    }
+
+    get bookObject() {
+        return {
+            title: this.title,
+            author: this.author,
+            pages: this.pages,
+        }
+    }
+
+    set bookObject({title,author,pages}) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+    }
+}
 
 
 function addBookToLibrary(title,author,pages) {
@@ -18,7 +40,6 @@ function addBookToLibrary(title,author,pages) {
     book.id = crypto.randomUUID();
     library.push(book);
 }
-
 
 
 function displayBooks() {
@@ -74,22 +95,18 @@ function displayBooks() {
 displayBooks();
 
 
-
 const newButton = document.getElementById("new");
 newButton.addEventListener("click", () => {
     const form = document.getElementById("form");
-
     // If inputs exist, clear them
     const inputs = form.querySelectorAll("input");
     if (inputs.length > 0) {
         inputs.forEach(input => input.value = "");
         return; // stop here, don’t rebuild the form
     }
-
     // If the form is empty, build it
     showForm();
 });
-
 
 
 // takes user input in a form to add a new book to library[]
@@ -149,22 +166,18 @@ function showForm() {
 
     form.append(fieldset);
 
-
     // submit button
     const submitBtn = document.createElement("button");
     submitBtn.setAttribute("type","submit");
     submitBtn.textContent = "Submit";
 
-
     submitBtn.addEventListener("click", function (event) {
         event.preventDefault();
-
         addBookToLibrary(
             titleInput.value,
             authorInput.value,
             pagesInput.value
         );
-
         displayBooks();
     });
 
