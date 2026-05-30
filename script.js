@@ -155,7 +155,8 @@ function showForm() {
     pagesLabel.setAttribute("for","pages");
     pagesLabel.textContent = "Number of pages";
     const pagesInput = document.createElement("input");
-    pagesInput.setAttribute("type","text");
+    pagesInput.setAttribute("type","number");
+    pagesInput.setAttribute("min","1");
     pagesInput.id = "pages";
     pagesInput.setAttribute("placeholder","295");
     pagesInput.required = true;
@@ -173,6 +174,25 @@ function showForm() {
 
     submitBtn.addEventListener("click", function (event) {
         event.preventDefault();
+
+        if (titleInput.validity.valueMissing) {
+            titleInput.setCustomValidity("Please enter the book title.");
+            titleInput.reportValidity();
+            return;
+        } else if (authorInput.validity.valueMissing) {
+            authorInput.setCustomValidity("The author has a name, dude.");
+            authorInput.reportValidity();
+            return;
+        } else if (pagesInput.validity.valueMissing) {
+            pagesInput.setCustomValidity("Books have pages.");
+            pagesInput.reportValidity();
+            return;
+        } else if (pagesInput.validity.rangeUnderflow) {
+                pagesInput.setCustomValidity("C'mon, it has at least one.");
+                pagesInput.reportValidity();
+                return;
+        }
+
         addBookToLibrary(
             titleInput.value,
             authorInput.value,
